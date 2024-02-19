@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="template :: head"></head>
+<body>
+<header th:replace="template :: header"></header>
+<div class="container">
+    <h1 th:text="${title}"></h1>
+</div>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nom Flor</th>
+            <th scope="col">Pais Flor</th>
+            <th scope="col">Tipus Flor</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Eliminar</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+
+        <th:block th:if="${#lists.isEmpty(flowers)}">
+            <h1 th:text="${miResponseEntity}" class="error-message"></h1>
+        </th:block>
+
+        <tr th:each="cl : ${flowers}">
+            <th scope="row" th:text="${cl.id}"></th>
+            <td th:text="${cl.flowerName}"></td>
+            <td th:text="${cl.flowerCountry}"></td>
+            <td th:text="${cl.flowerType}"></td>
+            <td>
+                <a th:href="@{'/api/flowers/edit/' + ${cl.id}}" class="btn btn-secondary">Editar</a>
+            </td>
+            <td>
+                <a th:href="@{'/api/flowers/delete/' + ${cl.id}}" class="btn btn-warning">X</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head head th:replace="template :: head">
+</head>
+<body>
+<header th:replace="template :: header"></header>
+<div class="container">
+    <h1 th:text="${title}"></h1>
+    <form th:action="@{/api/flowers/save}" th:object =${flower} class="row g-3" method="post">
+        <div class="col-md-4">
+            <label for="flowerName" class="form-label">Nom</label>
+            <input type="text" th:field="*{flowerName}" class="form-control" id="flowerName" placeholder="Nom de la flor" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="flowerCountry" class="form-label">País</label>
+            <input type="text" th:field="*{flowerCountry}" class="form-control" id="flowerCountry" placeholder="País de la flower" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-secondary" type="submit">Afegir</button>
+        </div>
+    </form>
+
+    <footer th:replace="template :: footer"></footer>
+</div>
+</body>
+</html>

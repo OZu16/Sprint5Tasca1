@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>CRUD Flors</title>
+    <link rel="stylesheet" th:href="@{/boostertrap/bootstrap.min.css}">
+</head>
+<body>
+<header th:fragment="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/api/flowers/">Gestor de Flors</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- navbar search-->
+            <nav class="navbar navbar-dark bg-dark">
+                <div class="container d-flex justify-content-center align-items-center">
+                    <form class="d-flex" th:action="@{/api/flowers/getOne}">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/api/flowers/">Inici</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/api/flowers/getAll">Flors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/api/flowers/add">Afegir</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <h1>Bienvenido al Gestor de Flores</h1>
+    <p>Encuentra información sobre flores y realiza operaciones CRUD.</p>
+</div>
+
+<footer th:fragment="footer">
+    <div class="container text-center mt-5 fixed-bottom">
+        <p>&copy; 2024 wepa!</p>
+    </div>
+</footer>
+
+<script th:src="@{/boostertrap/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

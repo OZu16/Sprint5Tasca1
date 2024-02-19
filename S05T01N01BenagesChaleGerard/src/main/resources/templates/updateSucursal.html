@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head head th:replace="template :: head">
+</head>
+<body>
+<header th:replace="template :: header"></header>
+<div class="container">
+    <h1 th:text="${title}"></h1>
+    <form th:action="@{'/api/sucursals/update/' + ${sucursal.id}}" method="post" th:object="${sucursal}" class="row g-3">
+        <div class="col-md-4">
+            <input type="hidden" th:field="*{id}">
+            <label for="sucursalName" class="form-label">Nom</label>
+            <input type="text" th:field="*{sucursalName}" class="form-control" id="sucursalName" placeholder="Nom de la sucursal" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="sucursalCountry" class="form-label">País</label>
+            <input type="text" th:field="*{sucursalCountry}" class="form-control" id="sucursalCountry" placeholder="País de la sucursal" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-secondary" type="submit">Editar</button>
+        </div>
+    </form>
+
+    <footer th:replace="template :: footer"></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="template :: head"></head>
+<body>
+<header th:replace="template :: header"></header>
+<div class="container">
+    <h1 th:text="${title}"></h1>
+</div>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nom Sucursal</th>
+            <th scope="col">Pais Sucursal</th>
+            <th scope="col">Tipus Sucursal</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Eliminar</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+
+        <th:block th:if="${#lists.isEmpty(sucursals)}">
+            <h1 th:text="${miResponseEntity}" class="error-message"></h1>
+        </th:block>
+
+        <tr th:each="cl : ${sucursals}">
+            <th scope="row" th:text="${cl.id}"></th>
+            <td th:text="${cl.sucursalName}"></td>
+            <td th:text="${cl.sucursalCountry}"></td>
+            <td th:text="${cl.sucursalType}"></td>
+            <td>
+                <a th:href="@{'/api/sucursals/edit/' + ${cl.id}}" class="btn btn-secondary">Editar</a>
+            </td>
+            <td>
+                <a th:href="@{'/api/sucursals/delete/' + ${cl.id}}" class="btn btn-warning">X</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>
